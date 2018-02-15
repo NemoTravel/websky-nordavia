@@ -1,0 +1,238 @@
+<div ng-repeat="(segNum, segment) in vm.searchParams.segments" class="chooseFlight">
+  <div class="chooseFlight__i">
+
+
+    <h2 class="flightWay">
+            <span ng-show="vm.searchParams.segments.length > 1">{{segNum + 1}}.</span>
+            {{ 'web.searchResult.segmentLabel' | aliasStatic}}<span ng-if="vm.searchParams.segments.length > 1">{{ " " }}{{ 'web.searchResult.segmentLabel.' | aliasWithPrefix:segNum }}</span>:
+            <a href ng-click="vm.scrollToSegment(segNum)" name="segment_{{ segNum }}">
+                <span>
+                    <geo-marker-wrapper prefix="flightWay__point_origin" key="search-ffp-variants" cityinfo="segment.origin"></geo-marker-wrapper>
+                </span>
+                <span>
+                    <geo-marker-wrapper prefix="flightWay__point_destination" key="search-ffp-variants" cityinfo="segment.destination"></geo-marker-wrapper>
+                </span>
+            </a>
+        </h2>
+
+    <div ng-if="vm.searchResultPeriod.segmentsCalendar" class="chooseDate paidMiles mobileHide">
+      <div class="chooseDate__i">
+        <a ng-click="vm.resetDate(segNum, false, -7)" class="control control_prev" ng-class="{ control_disabled:!vm.checkResetDate(segNum, false, -7) }" href></a>
+        <div class="tableWrap">
+          <table>
+            <tbody>
+              <tr>
+                <td ng-repeat="cell in vm.searchResultPeriod.segmentsCalendar[segNum]" ng-class="{ active:(cell.date == segment.date) }">
+                  <a href ng-click="vm.resetDate(segNum, cell.date)" ng-class="{ control_disabled:!vm.checkResetDate(segNum, cell.date) }">
+                                        {{ cell.date | formatDate: 'D MMM, dd' }}
+                                        <strong></strong>
+                                    </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <a ng-click="vm.resetDate(segNum, false, 7)" class="control control_next" ng-class="{ control_disabled:!vm.checkResetDate(segNum, false, 7) }" href></a>
+      </div>
+    </div>
+
+    <div ng-if="vm.searchResultPeriod.segmentsCalendar" class="chooseDate paidMiles mobileShow">
+      <div class="chooseDate__i">
+        <div class="item">
+          <a ng-click="vm.resetDate(segNum, false, -7)" ng-class="{ control_disabled:!vm.checkResetDate(segNum, false, -7) }" href class="prev"><span>{{ 'web.searchResult.minus3days' | aliasStatic}}</span></a>
+        </div>
+        <div ng-repeat="cell in vm.searchResultPeriod.segmentsCalendar[segNum]" ng-class="{ active:(cell.date == segment.date) }" class="item">
+          <a href ng-click="vm.resetDate(segNum, cell.date)" ng-class="{ control_disabled:!vm.checkResetDate(segNum, cell.date) }">
+                        {{ cell.date | formatDate: 'D MMM, dd' }}
+                        <strong></strong>
+                    </a>
+        </div>
+        <div class="item">
+          <a ng-click="vm.resetDate(segNum, false, 7)" ng-class="{ control_disabled:!vm.checkResetDate(segNum, false, 7) }" href class="next"><span>{{ 'web.searchResult.plus3days' | aliasStatic}}</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flightTableWrap mobileHide">
+
+      <div style="display: none">
+
+        <span>
+          vm.searchResult.fareGroups -- {{ vm.searchResult.fareGroups }}
+        </span>
+
+        <span>
+          vm.searchResult -- {{ vm.searchResult }}
+        </span>
+
+      </div>
+
+      <div class="flightTable">
+        <table>
+          <tr class="headrow">
+            <td class="sortingCell firstCol">
+              <variants-sort-switch selected="vm.searchResult.segmentSort[segNum]"></variants-sort-switch>
+            </td>
+            <td ng-repeat="(fareGroupNum, fareGroup) in vm.searchResult.fareGroups"
+                class="{{ 'fareGroup_' + fareGroup.id }} econom"
+                ng-if="vm.searchResult.fareGroupMinPricesLists[segNum][fareGroupNum]">
+              {{ fareGroup.name }}
+              <span style="display: none">
+                vm.searchResult.fareGroupMinPricesLists[segNum][fareGroupNum] -- {{ vm.searchResult.fareGroupMinPricesLists[segNum][fareGroupNum] }}
+              </span>
+            </td>
+          </tr>
+          <tr ng-repeat="(rowNum, row) in vm.searchResult.segmentRows[segNum]" class="contentRow">
+            <td class="firstCol">
+              <table class="timeTable">
+                <tr>
+                  <td>
+                    <p class="time">
+                      {{ row.flightsInfo.departuretime }}
+                      <sup ng-if="row.flightsInfo.departuredayshift">
+                                                {{ row.flightsInfo.departuredayshift | dayshift }}
+												<span class="infoBox">
+													<span ng-if="row.flightsInfo.departuredayshift == 1" class="infoBox__i">
+														{{ 'web.searchResult.departureTomorrow' | aliasStatic}}
+													</span>
+                                                    <span ng-if="row.flightsInfo.departuredayshift > 1" class="infoBox__i">
+														{{ 'web.searchResult.departuredayshift' | aliasStatic}} {{row.flightsInfo.departuredayshift}} {{ 'web.searchResult.dayshiftDays' | aliasStatic}}
+													</span>
+												</span>
+											</sup> – {{ row.flightsInfo.arrivaltime }}
+                      <sup ng-if="row.flightsInfo.arrivaldayshift">
+                                                {{ row.flightsInfo.arrivaldayshift | dayshift }}
+												<span class="infoBox">
+													<span ng-if="row.flightsInfo.arrivaldayshift == 1" class="infoBox__i">
+														{{ 'web.searchResult.arrivalTomorrow' | aliasStatic}}
+													</span>
+                                                    <span ng-if="row.flightsInfo.arrivaldayshift > 1" class="infoBox__i">
+														{{ 'web.searchResult.arrivaldayshift' | aliasStatic}} {{row.flightsInfo.arrivaldayshift}} {{ 'web.searchResult.dayshiftDays' | aliasStatic}}
+													</span>
+												</span>
+											</sup>
+                    </p>
+                  </td>
+                  <td>
+                    <p class="duration">{{ row.flightsInfo.flighttime | timeAsWords }}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href fancybox="popupFlightDetail" ng-click="vm.flightDetail = row" class="popup_js">
+                                            {{ row.flightsInfo.connectionsMessage }}<span ng-if="row.flightsInfo.connections && row.flightsInfo.connections.length == 1">: {{ row.flightsInfo.connections[0].time | timeAsWords }}</span>
+                                        </a>
+                    <span ng-if="row.flights[0].landings.length" class="landing">
+                                            {{ vm.suffixCount(row.flights[0].landings.length, ( 'web.searchResult.landings' | aliasStatic)) }}
+                                        </span>
+                  </td>
+                  <td></td>
+                </tr>
+              </table>
+
+            </td>
+            <td ng-repeat="(priceNum, priceItem) in row.prices track by $index"
+                ng-class="{ active: priceItem.selected }"
+                ng-if="vm.searchResult.fareGroupMinPricesLists[segNum][priceNum]">
+              <wrap ng-if="priceItem">
+                <a href ng-if="priceItem.price && priceItem.variantAvailable" ng-click="vm.selectVariant(segNum, rowNum, priceNum)">
+
+                  <wrap ng-bind-html="{ value: priceItem.price, currency: priceItem.currency } | price"></wrap>
+
+                </a>
+                <a href class="control_disabled" ng-if="priceItem.price && !priceItem.variantAvailable">
+                  <wrap ng-bind-html="{ value: priceItem.price, currency: priceItem.currency } | price"></wrap>
+                </a>
+                <i ng-if="!priceItem.price" class="icon_minus"></i>
+                <span ng-if="!priceItem.variantAvailable && priceItem.unavailabilityReason" class="infoBoxWrap">
+                                    <i class="icon_info"></i>
+                                    <span class="infoBox">
+                                        <span class="infoBox__i">
+                                            {{ priceItem.unavailabilityReason }}
+                                        </span>
+                </span>
+                </span>
+              </wrap>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="tableInfo">
+        <table>
+          <tr>
+            <td>
+              {{ 'web.searchResult.localTimeMessage' | aliasStatic}}
+            </td>
+            <td>
+              {{ 'web.searchResult.totalPriceMessage' | aliasStatic}}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+
+    <div class="flightTableWrap mobileShow">
+
+      <div class="list">
+
+        <div ng-repeat="(fareGroupNum, fareGroup) in vm.searchResult.fareGroups" class="item dropWrapper {{ 'fareGroup_' + fareGroup.id }}" ng-class="{ active: fareGroupDropOpened[segNum][fareGroupNum], noDrop: !vm.searchResult.fareGroupMinPricesLists[segNum][fareGroupNum] }">
+          <a href ng-click=" fareGroupDropOpened[segNum][fareGroupNum] = !fareGroupDropOpened[segNum][fareGroupNum]; " class="showDrop_js ffpFareGroupLink" style="background: {{ fareGroup.color }};" ng-class="{ active: !fareGroupDropOpened[segNum][fareGroupNum] }">
+            <table>
+              <tr>
+                <td>{{ fareGroup.name }}</td>
+                <td></td>
+                <td ng-if="!vm.searchResult.fareGroupMinPricesLists[segNum][fareGroupNum]">
+                  {{ 'web.searchResult.brandEmpty' | aliasStatic}}
+                </td>
+                <td ng-if="vm.searchResult.fareGroupMinPricesLists[segNum][fareGroupNum]" ng-bind-html="{ value: vm.searchResult.fareGroupMinPricesLists[segNum][fareGroupNum].price, currency: vm.searchResult.fareGroupMinPricesLists[segNum][fareGroupNum].currency } | price"></td>
+              </tr>
+            </table>
+          </a>
+
+          <div class="drop" ng-class="{ active: !fareGroupDropOpened[segNum][fareGroupNum] }">
+            <div class="drop__i">
+
+              <div class="item" ng-repeat="(rowNum, row) in vm.searchResult.segmentRows[segNum]" ng-if="row.prices[fareGroupNum]" ng-class="{ active: row.prices[fareGroupNum].selected, control_disabled: (row.prices[fareGroupNum].comparedDateTimeDisable || !row.prices[fareGroupNum].variantAvailable) }">
+                <a href ng-if="row.prices[fareGroupNum].price && row.prices[fareGroupNum].variantAvailable" ng-click="vm.selectVariant(segNum, rowNum, fareGroupNum)">
+                  <table>
+                    <tr>
+                      <td>
+                        <strong>
+                                                    {{ row.flightsInfo.departuretime }}
+                                                     –
+                                                    {{ row.flightsInfo.arrivaltime }}
+                                                </strong>
+                      </td>
+                      <td>{{ row.flightsInfo.flighttime | timeAsWords }}</td>
+                      <td ng-bind-html="{ value: row.prices[fareGroupNum].price, currency: row.prices[fareGroupNum].currency } | price"></td>
+                    </tr>
+                  </table>
+                </a>
+                <a href ng-if="!row.prices[fareGroupNum].variantAvailable && row.prices[fareGroupNum].unavailabilityReason">
+                  <table class="unavailabilityReason">
+                    <tr>
+                      <td>
+                        <strong>{{ row.prices[fareGroupNum].unavailabilityReason }}</strong>
+                      </td>
+                    </tr>
+                  </table>
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+</div>
+
+<popup-flight-detail detail="vm.flightDetail"></popup-flight-detail>
