@@ -113,7 +113,8 @@
 															required
 															ng-pattern="vm.passengersCheck.passengerLastNameRegexp"
 															class="textInp inp-animate-placeholder"
-															error-highlight="{{vm.submitTouched}}">
+															error-highlight="{{vm.submitTouched}}"
+															autocomplete="off">
 														<label class="inp-animate-label">
 															<span>{{ 'web.passengersInfo.label.lastName' | aliasStatic}}</span>
 														</label>
@@ -132,7 +133,8 @@
 															required
 															ng-pattern="vm.passengersCheck.passengerFirstNameRegexp"
 															class="textInp inp-animate-placeholder"
-															error-highlight="{{vm.submitTouched}}">
+															error-highlight="{{vm.submitTouched}}"
+															autocomplete="off">
 														<label class="inp-animate-label">
 															<span>{{ 'web.passengersInfo.firstName' | aliasStatic}}</span>
 														</label>
@@ -156,7 +158,8 @@
 															error-highlight="{{vm.submitTouched}}"
                                                             ui-mask="99.99.9999"
                                                             model-view-value="true"
-                                                            ui-mask-placeholder="{{ 'web.datePattern' | aliasStatic}}"/>
+                                                            ui-mask-placeholder="{{ 'web.datePattern' | aliasStatic}}"
+															autocomplete="off"/>
 														<label class="inp-animate-label">
 															<span>{{ 'web.passengersInfo.dateOfBirth' | aliasStatic}}</span>
 														</label>
@@ -265,7 +268,8 @@
                                                             clean-document-number
 															ng-pattern="vm.documentNumberRegexByPassenger[passengerNumber]"
 															class="textInp inp-animate-placeholder"
-															error-highlight="{{vm.submitTouched}}">
+															error-highlight="{{vm.submitTouched}}"
+															autocomplete="off">
 														<label class="inp-animate-label">
 															<span>{{ 'web.passengersInfo.documentNumber' | aliasStatic}}</span>
 														</label>
@@ -288,7 +292,8 @@
 															error-highlight="{{vm.submitTouched}}"
                                                             ui-mask="99.99.9999"
                                                             model-view-value="true"
-                                                            ui-mask-placeholder="{{ 'web.datePattern' | aliasStatic}}">
+                                                            ui-mask-placeholder="{{ 'web.datePattern' | aliasStatic}}"
+															autocomplete="off">
 														<label class="inp-animate-label">
 															<span>{{ 'web.passengersInfo.documentDate' | aliasStatic}}</span>
 														</label>
@@ -313,7 +318,8 @@
                                                             ng-pattern="'customer.phoneRegexp' | param"
 															class="textInp inp-animate-placeholder"
 															error-highlight="{{vm.submitTouched}}"
-															placeholder="">
+															placeholder=""
+															autocomplete="off">
 														<label class="inp-animate-label">
 															<span>{{ 'web.passengersInfo.phone' | aliasStatic}}</span>
 														</label>
@@ -332,7 +338,8 @@
 															ng-required="vm.passengersCheck.requireEmail"
 															ng-pattern="vm.passengersCheck.emailRegex"
 															class="textInp inp-animate-placeholder"
-															error-highlight="{{vm.submitTouched}}">
+															error-highlight="{{vm.submitTouched}}"
+															autocomplete="off">
 														<label class="inp-animate-label">
 															<span>{{ 'web.passengersInfo.email' | aliasStatic}}</span>
 														</label>
@@ -363,7 +370,8 @@
                                                             name="bonusCard"
                                                             ng-model="passenger.bonusCard"
                                                             ng-pattern="'passengers.bonusCardRegex' | param"
-                                                            error-highlight="{{vm.submitTouched}}">
+                                                            error-highlight="{{vm.submitTouched}}"
+															autocomplete="off">
 														<label class="inp-animate-label">
 															<span>{{ 'web.passengersInfo.bonusCard' | aliasStatic}}</span>
 														</label>
@@ -400,7 +408,8 @@
 															required
 															ng-pattern="'customer.lastNameRegexp' | param"
 															class="textInp inp-animate-placeholder"
-															error-highlight="{{vm.submitTouched}}">
+															error-highlight="{{vm.submitTouched}}"
+															autocomplete="off">
 														<label class="inp-animate-label">
 															<span>{{ 'web.customerInfo.lastName' | aliasStatic}}</span>
 														</label>
@@ -419,7 +428,8 @@
 															required
 															ng-pattern="'customer.firstNameRegexp' | param"
 															class="textInp inp-animate-placeholder"
-															error-highlight="{{vm.submitTouched}}">
+															error-highlight="{{vm.submitTouched}}"
+															autocomplete="off">
 														<label class="inp-animate-label">
 															<span>{{ 'web.customerInfo.firstName' | aliasStatic}}</span>
 														</label>
@@ -441,7 +451,8 @@
                                                             ng-pattern="'customer.phoneRegexp' | param"
 															required
 															class="textInp inp-animate-placeholder"
-															error-highlight="{{vm.submitTouched}}">
+															error-highlight="{{vm.submitTouched}}"
+															autocomplete="off">
 														<label class="inp-animate-label">
 															<span>{{ 'web.customerInfo.phone' | aliasStatic}}</span>
 														</label>
@@ -460,7 +471,8 @@
 															ng-pattern="'site.emailRegexp' | param"
 															ng-change="vm.checkLogin()"
 															class="textInp inp-animate-placeholder"
-															error-highlight="{{vm.submitTouched}}">
+															error-highlight="{{vm.submitTouched}}"
+															autocomplete="off">
 														<label class="inp-animate-label">
 															<span>{{ 'web.customerInfo.email' | aliasStatic}}</span>
 														</label>
@@ -483,7 +495,8 @@
 															class="textInp"
 															error-highlight="{{vm.submitTouched}}"
 															tabindex="1000"
-															placeholder="{{ 'web.customerInfo.password' | aliasStatic}}">
+															placeholder="{{ 'web.customerInfo.password' | aliasStatic}}"
+															autocomplete="off">
 													</div>
 												</td>
 												<td>
@@ -501,7 +514,8 @@
 															class="textInp"
 															error-highlight="{{vm.submitTouched}}"
 															tabindex="1001"
-															placeholder="{{ 'web.customerInfo.passwordRepeat' | aliasStatic}}">
+															placeholder="{{ 'web.customerInfo.passwordRepeat' | aliasStatic}}"
+															autocomplete="off">
 													</div>
 												</td>
 											</tr>
