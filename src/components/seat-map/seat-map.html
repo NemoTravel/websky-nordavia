@@ -19,9 +19,11 @@
 
                                 <div ng-if="item.type == 'chair'"
                                     class="seat seat-cost-{{ vm.replaceDots(item.cost || 'none') }} seat-rfisc-{{ item.rfisc || 'none' }}  seat-map-color-group-{{ item.rfiscIndex != undefined ? item.rfiscIndex : 'none' }}  {{ vm.getSeatCssPropertiesClasses(item) }}"
+									selected-flight="{{vm.selectedFlight}}"
+									selected-passenger="{{vm.selectedPassenger}}"
                                     ng-click="vm.setPassengerFlightSeat(item, cabin.allowed, row.number)"
-                                    ng-class="{ seat_disabled: (!item.available || !cabin.allowed), active: vm.isSelectedByActivePassenger(row.number + item.number), selectedByOrderPassenger: vm.isSelectedByOrderPassenger(row.number + item.number), 'seat-auto-assigned': item.autoAssigned }">
-                                        <div ng-if="item.available && cabin.allowed" class="seatName">
+                                    ng-class="{ seat_disabled: (!item.available || !cabin.allowed), active: vm.isSelectedByActivePassenger(row.number + item.number), selectedByOrderPassenger: vm.isSelectedByOrderPassenger(row.number + item.number), 'seat-auto-assigned': item.autoAssigned, 'js-seat-not-for-all': (item.properties.indexOf('not_for_child') > -1 || item.properties.indexOf('not_for_infant') > -1)}">
+										<div ng-if="item.available && cabin.allowed" class="seatName">
                                             {{ row.number }}{{ item.number }}
 											<wrap ng-if="item.cost">
                                                 {{' - '}}

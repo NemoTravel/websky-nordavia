@@ -114,7 +114,10 @@
 															ng-pattern="vm.passengersCheck.passengerLastNameRegexp"
 															class="textInp inp-animate-placeholder"
 															error-highlight="{{vm.submitTouched}}"
-															autocomplete="off">
+															autocomplete="off"
+															autocorrect="off"
+															autocapitalize="off"
+															spellcheck="false">
 														<label class="inp-animate-label">
 															<span>{{ 'web.passengersInfo.label.lastName' | aliasStatic}}</span>
 														</label>
@@ -134,7 +137,10 @@
 															ng-pattern="vm.passengersCheck.passengerFirstNameRegexp"
 															class="textInp inp-animate-placeholder"
 															error-highlight="{{vm.submitTouched}}"
-															autocomplete="off">
+															autocomplete="off"
+															autocorrect="off"
+															autocapitalize="off"
+															spellcheck="false">
 														<label class="inp-animate-label">
 															<span>{{ 'web.passengersInfo.firstName' | aliasStatic}}</span>
 														</label>
@@ -159,7 +165,10 @@
                                                             ui-mask="99.99.9999"
                                                             model-view-value="true"
                                                             ui-mask-placeholder="{{ 'web.datePattern' | aliasStatic}}"
-															autocomplete="off"/>
+															autocomplete="off"
+															autocorrect="off"
+															autocapitalize="off"
+															spellcheck="false"/>
 														<label class="inp-animate-label">
 															<span>{{ 'web.passengersInfo.dateOfBirth' | aliasStatic}}</span>
 														</label>
@@ -269,7 +278,10 @@
 															ng-pattern="vm.documentNumberRegexByPassenger[passengerNumber]"
 															class="textInp inp-animate-placeholder"
 															error-highlight="{{vm.submitTouched}}"
-															autocomplete="off">
+															autocomplete="off"
+															autocorrect="off"
+															autocapitalize="off"
+															spellcheck="false">
 														<label class="inp-animate-label">
 															<span>{{ 'web.passengersInfo.documentNumber' | aliasStatic}}</span>
 														</label>
@@ -293,7 +305,10 @@
                                                             ui-mask="99.99.9999"
                                                             model-view-value="true"
                                                             ui-mask-placeholder="{{ 'web.datePattern' | aliasStatic}}"
-															autocomplete="off">
+															autocomplete="off"
+															autocorrect="off"
+															autocapitalize="off"
+															spellcheck="false">
 														<label class="inp-animate-label">
 															<span>{{ 'web.passengersInfo.documentDate' | aliasStatic}}</span>
 														</label>
@@ -319,7 +334,10 @@
 															class="textInp inp-animate-placeholder"
 															error-highlight="{{vm.submitTouched}}"
 															placeholder=""
-															autocomplete="off">
+															autocomplete="off"
+															autocorrect="off"
+															autocapitalize="off"
+															spellcheck="false">
 														<label class="inp-animate-label">
 															<span>{{ 'web.passengersInfo.phone' | aliasStatic}}</span>
 														</label>
@@ -339,7 +357,10 @@
 															ng-pattern="vm.passengersCheck.emailRegex"
 															class="textInp inp-animate-placeholder"
 															error-highlight="{{vm.submitTouched}}"
-															autocomplete="off">
+															autocomplete="off"
+															autocorrect="off"
+															autocapitalize="off"
+															spellcheck="false">
 														<label class="inp-animate-label">
 															<span>{{ 'web.passengersInfo.email' | aliasStatic}}</span>
 														</label>
@@ -371,7 +392,10 @@
                                                             ng-model="passenger.bonusCard"
                                                             ng-pattern="'passengers.bonusCardRegex' | param"
                                                             error-highlight="{{vm.submitTouched}}"
-															autocomplete="off">
+															autocomplete="off"
+															autocorrect="off"
+															autocapitalize="off"
+															spellcheck="false">
 														<label class="inp-animate-label">
 															<span>{{ 'web.passengersInfo.bonusCard' | aliasStatic}}</span>
 														</label>
@@ -409,7 +433,10 @@
 															ng-pattern="'customer.lastNameRegexp' | param"
 															class="textInp inp-animate-placeholder"
 															error-highlight="{{vm.submitTouched}}"
-															autocomplete="off">
+															autocomplete="off"
+															autocorrect="off"
+															autocapitalize="off"
+															spellcheck="false">
 														<label class="inp-animate-label">
 															<span>{{ 'web.customerInfo.lastName' | aliasStatic}}</span>
 														</label>
@@ -429,7 +456,10 @@
 															ng-pattern="'customer.firstNameRegexp' | param"
 															class="textInp inp-animate-placeholder"
 															error-highlight="{{vm.submitTouched}}"
-															autocomplete="off">
+															autocomplete="off"
+															autocorrect="off"
+															autocapitalize="off"
+															spellcheck="false">
 														<label class="inp-animate-label">
 															<span>{{ 'web.customerInfo.firstName' | aliasStatic}}</span>
 														</label>
@@ -452,7 +482,10 @@
 															required
 															class="textInp inp-animate-placeholder"
 															error-highlight="{{vm.submitTouched}}"
-															autocomplete="off">
+															autocomplete="off"
+															autocorrect="off"
+															autocapitalize="off"
+															spellcheck="false">
 														<label class="inp-animate-label">
 															<span>{{ 'web.customerInfo.phone' | aliasStatic}}</span>
 														</label>
@@ -472,7 +505,10 @@
 															ng-change="vm.checkLogin()"
 															class="textInp inp-animate-placeholder"
 															error-highlight="{{vm.submitTouched}}"
-															autocomplete="off">
+															autocomplete="off"
+															autocorrect="off"
+															autocapitalize="off"
+															spellcheck="false">
 														<label class="inp-animate-label">
 															<span>{{ 'web.customerInfo.email' | aliasStatic}}</span>
 														</label>
@@ -496,7 +532,10 @@
 															error-highlight="{{vm.submitTouched}}"
 															tabindex="1000"
 															placeholder="{{ 'web.customerInfo.password' | aliasStatic}}"
-															autocomplete="off">
+															autocomplete="off"
+															autocorrect="off"
+															autocapitalize="off"
+															spellcheck="false">
 													</div>
 												</td>
 												<td>
@@ -515,7 +554,10 @@
 															error-highlight="{{vm.submitTouched}}"
 															tabindex="1001"
 															placeholder="{{ 'web.customerInfo.passwordRepeat' | aliasStatic}}"
-															autocomplete="off">
+															autocomplete="off"
+															autocorrect="off"
+															autocapitalize="off"
+															spellcheck="false">
 													</div>
 												</td>
 											</tr>

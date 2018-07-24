@@ -113,8 +113,8 @@
                                             class="passengersTable__priceSeat"
                                             ng-bind-html="{ value: vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum].totalPrice, currency: vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum].currency } | price">
                                         </span>
-                                        <a ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum]  && !vm.checkServiceRemovalProhibited('seat', passengerNum, flightNum)" 
-                                            href ng-click="vm.removePassengerFlightSeat(passengerNum, flightNum)" class="btn-remove">
+										<a ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum]  && !vm.checkServiceRemovalProhibited('seat', passengerNum, flightNum)" 
+                                            href ng-click="vm.removePassengerFlightSeat(passengerNum, flightNum)" class="btn-remove js-seatmap-remove-{{flightNum}}-{{passengerNum}}">
                                             <span class="infoBoxWrap">
                                                 <i class="icon_remove"></i>
                                                 <span class="infoBox">
@@ -124,6 +124,35 @@
                                                 </span>
                                             </span>
                                         </a>
+										
+										<div ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum]  && !vm.checkServiceRemovalProhibited('seat', passengerNum, flightNum)" 
+										id="popupSeatMapConfirm-{{flightNum}}-{{passengerNum}}" style="display: none" class="popup popup_seatmap_confirm">
+											<div class="title">
+												<div class="title__i">
+													<p>
+														{{ 'web.popupSeatMapConfirm.title' | aliasStatic}}
+													</p>
+												</div>
+											</div>
+											<div class="popup__i">
+												<div class="popup__seatmap-limitation-info" ng-bind-html="'web.popupSeatMapConfirm.info' | aliasStatic"></div>
+												<div class="popup__i__footer">
+													<div class="popup__i__footer__buttons">
+														<button class="js-seatmap-limitation-button btn popup__i__footer__buttons__button">
+															{{ 'web.popupSeatMapConfirm.confirm' | aliasStatic}}
+														</button>
+														<button class="js-seatmap-limitation-button-remove btn popup__i__footer__buttons__button" flightNum="{{flightNum}}" passengerNum="{{passengerNum}}">
+															{{ 'web.popupSeatMapConfirm.cancel' | aliasStatic}}
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+										<a ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum]  && !vm.checkServiceRemovalProhibited('seat', passengerNum, flightNum)"
+										style="display: none" href fancybox="popupSeatMapConfirm-{{flightNum}}-{{passengerNum}}"
+										class="popup_js" id="js-seatmap-limitation-open-popup-{{flightNum}}-{{passengerNum}}"></a>
+										
                                         <div ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum].reservedUntil"
                                             class="passengersTable__reservedUntil">
                                             <span class="reservedUntil__label">
