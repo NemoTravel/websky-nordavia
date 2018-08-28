@@ -126,6 +126,40 @@
         </div>
     </div>
 
+
+
+
+    <wrap ng-if="vm.orderInfo.amountToPay">
+        <h2 class="title">
+            {{ 'web.orderInfo.exchangeTickets' | aliasStatic }}
+        </h2>
+        <div class="totalTable">
+            <div class="bottom">
+
+                <div class="total">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                {{ 'web.orderInfo.prices.totalPrice' | aliasStatic}}
+                            </td>
+                            <td>
+                                <span ng-bind-html="{ value: vm.orderInfo.amountToPay, currency: vm.orderInfo[vm.mode].currency } | price"></span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p class="right">
+                        <a href fancybox="popupRemark">
+                            {{ 'web.choosenFlight.remarkLink' | aliasStatic}}
+                        </a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </wrap>
+
     <popup-detailedprice order="vm.orderInfo"></popup-detailedprice>
 
 </wrap>
