@@ -129,7 +129,7 @@
 
 
 
-    <wrap ng-if="vm.orderInfo.amountToPay">
+    <wrap ng-if="vm.orderInfo.amountToPay && vm.orderInfo.header.status === 'being_paid_for_exchange'">
         <h2 class="title">
             {{ 'web.orderInfo.exchangeTickets' | aliasStatic }}
         </h2>
