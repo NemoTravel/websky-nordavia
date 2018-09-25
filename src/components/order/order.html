@@ -361,7 +361,7 @@
             </h2>
             <wrap ng-bind-html=" 'web.orderInfo.addExtraServices.htmlItems' | aliasStatic"></wrap>
             <div class="btnRow">
-              <a href ng-click="vm.openAddServices(vm.pnrOrTicketNumber, vm.lastName)" class="btn btn_select">
+              <a href ng-click="vm.openAddServices(vm.orderInfo.header.regnum, vm.lastName)" class="btn btn_select">
                 {{ 'web.buttons.addServices' | aliasStatic}}
               </a>
             </div>
@@ -393,19 +393,20 @@
 
     <!-- Возможный воркэраунд #34307 -->
     <!--<payment-frame ng-if="vm.showPaymentFrame && vm.orderInfo.paymentform !== 'electronic_money'" url="vm.orderInfo.paymentRedirectTo"></payment-frame>-->
+    <payment-frame ng-if="vm.showPaymentFrame" url="vm.orderInfo.paymentRedirectTo"></payment-frame>
     <!--TODO: разобраться как переопределять контроллеры-->
-      <div style="display: none;" ng-init="vm.orderInfo.paymentform === 'electronic_money' || 'e-banking' ? vm.payEmoneyButtonClicked = false : vm.payEmoneyButtonClicked = true"></div>
-      <div ng-if="vm.orderInfo.paymentform === 'electronic_money' || 'e-banking' && vm.showPaymentFrame" class="btn-row btn-row--confirm-electronic-money">
-          <ul>
-              <li ng-if="vm.orderInfo.paymentform === 'electronic_money' || 'e-banking'">
-                  <a href ng-click="vm.payEmoneyButtonClicked = true" class="btn btn-confirm-emoney-pay">
-                    <span ng-if="vm.orderInfo.paymentform === 'electronic_money'">{{ 'web.buttons.confirmElectronicMoneyPay' | aliasStatic}}</span>
-                    <span ng-if="vm.orderInfo.paymentform === 'e-banking'">{{ 'web.buttons.confirmEBankingPay' | aliasStatic }}</span>
+      <!--<div style="display: none;" ng-init="vm.orderInfo.paymentform === 'electronic_money' || 'e-banking' ? vm.payEmoneyButtonClicked = false : vm.payEmoneyButtonClicked = true"></div>-->
+      <!--<div ng-if="vm.orderInfo.paymentform === 'electronic_money' || 'e-banking' && vm.showPaymentFrame" class="btn-row btn-row&#45;&#45;confirm-electronic-money">-->
+          <!--<ul>-->
+              <!--<li ng-if="vm.orderInfo.paymentform === 'electronic_money' || 'e-banking'">-->
+                  <!--<a href ng-click="vm.payEmoneyButtonClicked = true" class="btn btn-confirm-emoney-pay">-->
+                    <!--<span ng-if="vm.orderInfo.paymentform === 'electronic_money'">{{ 'web.buttons.confirmElectronicMoneyPay' | aliasStatic}}</span>-->
+                    <!--<span ng-if="vm.orderInfo.paymentform === 'e-banking'">{{ 'web.buttons.confirmEBankingPay' | aliasStatic }}</span>-->
 
-                  </a>
-              </li>
-          </ul>
-      </div>
+                  <!--</a>-->
+              <!--</li>-->
+          <!--</ul>-->
+      <!--</div>-->
 
 
     <div class="checkPassengerDataInfo" ng-if="vm.showPaymentFrame">
@@ -416,12 +417,12 @@
 
     <div ng-if="!vm.showPaymentFrame" class="btn-row">
       <ul>
-        <li ng-if="vm.orderInfo.paymentform === 'electronic_money' || 'e-banking' && vm.orderInfo.header.status !== 'cancelled'">
-          <a href ng-click="vm.payEmoneyButtonClicked = true" class="btn btn-confirm-emoney-pay">
-            <span ng-if="vm.orderInfo.paymentform === 'electronic_money'">{{ 'web.buttons.confirmElectronicMoneyPay' | aliasStatic}}</span>
-            <span ng-if="vm.orderInfo.paymentform === 'e-banking'">{{ 'web.buttons.confirmEBankingPay' | aliasStatic }}</span>
-          </a>
-        </li>
+        <!--<li ng-if="vm.orderInfo.paymentform === 'electronic_money' || 'e-banking' && vm.orderInfo.header.status !== 'cancelled'">-->
+          <!--<a href ng-click="vm.payEmoneyButtonClicked = true" class="btn btn-confirm-emoney-pay">-->
+            <!--<span ng-if="vm.orderInfo.paymentform === 'electronic_money'">{{ 'web.buttons.confirmElectronicMoneyPay' | aliasStatic}}</span>-->
+            <!--<span ng-if="vm.orderInfo.paymentform === 'e-banking'">{{ 'web.buttons.confirmEBankingPay' | aliasStatic }}</span>-->
+          <!--</a>-->
+        <!--</li>-->
         <li ng-if="vm.orderInfo.possiblePaymentForms">
           <a href class="btn btn-change-pay-method" fancybox="popupChoosePayMethod">
             {{ 'web.buttons.changePayMethod' | aliasStatic}}
@@ -443,7 +444,7 @@
           </a>
         </li>
         <li ng-if="vm.orderInfo.refundAllowed">
-          <a href ng-click="vm.openRefund(vm.orderInfo.header.regunm, vm.orderInfo.header.lastName)" class="btn">
+          <a href ng-click="vm.openRefund(vm.orderInfo.header.regnum, vm.orderInfo.header.lastName)" class="btn">
             {{ 'web.orderInfo.actions.refund' | aliasStatic}}
           </a>
         </li>
