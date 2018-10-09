@@ -4,7 +4,7 @@
   {{ vm.errorMessage | aliasDynamic }}
 </div>
 
-<div ng-if="!vm.loading && vm.orderInfo && !vm.errorMessage && !vm.popupChoosePayMethodPending" class="invoice" online-payment-restrict order-info="vm.orderInfo" show-payment-frame="vm.showPaymentFrame">
+<div ng-if="!vm.loading && vm.orderInfo && !vm.errorMessage && !vm.popupChoosePayMethodPending" class="invoice"  order-info="vm.orderInfo" show-payment-frame="vm.showPaymentFrame">
   <div class="invoice__i">
     <div ng-if="vm.orderInfo.header.regnum" class="invoiceInfo">
       <div class="invoiceInfo__i">
