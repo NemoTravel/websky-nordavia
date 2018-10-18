@@ -401,14 +401,6 @@
 
     <div ng-if="!vm.showPaymentFrame" class="btn-row">
       <ul>
-        <li ng-if="restrictPayment.restrictPayment">
-          <a href ng-click="restrictPayment.allowPayment()" class="btn btn-confirm-emoney-pay">
-            <span ng-if="vm.orderInfo.paymentform === 'electronic_money'">{{ 'web.buttons.confirmElectronicMoneyPay' | aliasStatic}}</span>
-            <span ng-if="vm.orderInfo.paymentform === 'e-banking'">{{ 'web.buttons.confirmEBankingPay' | aliasStatic }}</span>
-            <span ng-if="vm.orderInfo.paymentform === 'plastic_card'">{{ 'web.buttons.plastic_card_Pay' | aliasStatic }}</span>
-          </a>
-
-        <!--</li>-->
         <li ng-if="vm.orderInfo.possiblePaymentForms">
           <a href class="btn btn-change-pay-method" fancybox="popupChoosePayMethod">
             {{ 'web.buttons.changePayMethod' | aliasStatic}}
@@ -439,7 +431,7 @@
             {{ 'web.orderInfo.actions.exchange' | aliasStatic}}
           </a>
         </li>
-        <li ng-if="vm.orderInfo.retryRegisterAllowed && !restrictPayment.restrictPayment">
+        <li ng-if="vm.orderInfo.retryRegisterAllowed">
           <a href ng-click="vm.retryPayment()" class="btn">
             {{ 'web.buttons.retryPay' | aliasStatic}}
           </a>

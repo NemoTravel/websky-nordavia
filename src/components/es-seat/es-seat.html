@@ -113,7 +113,7 @@
                                             class="passengersTable__priceSeat"
                                             ng-bind-html="{ value: vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum].totalPrice, currency: vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum].currency } | price">
                                         </span>
-										<a ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum]  && !vm.checkServiceRemovalProhibited('seat', passengerNum, flightNum)" 
+										<a ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum]  && !vm.checkServiceRemovalProhibited('seat', passengerNum, flightNum)"
                                             href ng-click="vm.removePassengerFlightSeat(passengerNum, flightNum)" class="btn-remove js-seatmap-remove-{{flightNum}}-{{passengerNum}}">
                                             <span class="infoBoxWrap">
                                                 <i class="icon_remove"></i>
@@ -124,8 +124,8 @@
                                                 </span>
                                             </span>
                                         </a>
-										
-										<div ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum]  && !vm.checkServiceRemovalProhibited('seat', passengerNum, flightNum)" 
+
+										<div ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum]  && !vm.checkServiceRemovalProhibited('seat', passengerNum, flightNum)"
 										id="popupSeatMapConfirm-{{flightNum}}-{{passengerNum}}" style="display: none" class="popup popup_seatmap_confirm">
 											<div class="title">
 												<div class="title__i">
@@ -148,11 +148,11 @@
 												</div>
 											</div>
 										</div>
-										
+
 										<a ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum]  && !vm.checkServiceRemovalProhibited('seat', passengerNum, flightNum)"
 										style="display: none" href fancybox="popupSeatMapConfirm-{{flightNum}}-{{passengerNum}}"
 										class="popup_js" id="js-seatmap-limitation-open-popup-{{flightNum}}-{{passengerNum}}"></a>
-										
+
                                         <div ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum].reservedUntil"
                                             class="passengersTable__reservedUntil">
                                             <span class="reservedUntil__label">
@@ -378,7 +378,7 @@
                                                     class="passengersTable__priceSeat"
                                                     ng-bind-html="{ value: vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum].totalPrice, currency: vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum].currency } | price">
                                                 </span>
-                                                <a ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum] && !vm.checkServiceRemovalProhibited('seat', passengerNum, flightNum)" 
+                                                <a ng-if="vm.service.selectedSeatsByPassengerSegments[passengerNum][flightNum] && !vm.checkServiceRemovalProhibited('seat', passengerNum, flightNum)"
                                                     href ng-click="vm.removePassengerFlightSeat(passengerNum, flightNum)" class="btn-remove">
                                                     <span class="infoBoxWrap">
                                                         <i class="icon_remove"></i>
